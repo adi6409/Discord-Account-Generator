@@ -1,4 +1,4 @@
-# Discord Account Generator :shipit:
+# Discord Account Generator
 
 > If you want to test the bot than join the discord linked below.
 
