@@ -8,7 +8,7 @@
 
 # Todo
 - [ ] Commands
-   - [ ] `$get <type> -> get random account of type`
+   - [x] `$get <type> -> get random account of type`
    - [ ] `$delete <type/username> -> delete account by type or username`
    - [ ] `$stock -> show all accounts that are available (only display by type)`
 - [ ] Refactor Cooldown System
