@@ -11,7 +11,7 @@ export default class ReadyEvent extends BaseEvent {
 
     client.user?.setActivity({
       type: 'LISTENING',
-      name: '$help for more information',
+      name: `${client.guilds.cache.size} Guilds - $help for more information`,
     })
 
     client.generateInvite({

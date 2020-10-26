@@ -26,12 +26,12 @@ export default class HelpCommand extends BaseCommand {
         {
           name: '# Accounts',
           value:
-            '`$add` ➜ Add an Account to the Bot.',
+            '`$add` ➜ Add an Account to the Bot.\n`$stock` ➜ Shows Amount of Accounts*\n',
         },
         {
           name: '# Miscellaneous',
           value:
-            '`$help` ➜ Show a List of commands\n`$ping` ➜ Pong\n`$serverinfo` ➜ Show Server Information*\n`$uptime` ➜ Show Uptime from Bot',
+            '`$help` ➜ Show a List of commands\n`$ping` ➜ Pong\n`$serverinfo` ➜ Show Server Information\n`$uptime` ➜ Show Uptime from Bot',
         },
       ],
       footer: {

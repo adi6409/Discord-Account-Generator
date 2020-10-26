@@ -5,6 +5,9 @@ import { PermissionType } from '../../enums/PermissionType';
 import { AccountType } from '../../enums/AccountType';
 import { IAccount } from '../../interface/Account';
 import { Account } from '../../entities/Account';
+import { EmbedColor } from '../../enums/EmbedColor';
+
+let cooldown: number;
 
 export default class AddCommand extends BaseCommand {
   constructor() {
@@ -12,26 +15,37 @@ export default class AddCommand extends BaseCommand {
   }
 
   async run(client: DiscordClient, message: Message, args: Array<string>) {
+    if (cooldown && cooldown > Date.now() - 5 * 3000) {
+      message.delete({ timeout: 1000 })
+      const cooldownmsg = await message.channel.send('Command on Cooldown')
+
+      cooldownmsg.delete({ timeout: 2000 })
+      return
+    }
+
     const channel = await client.channels.cache.get(process.env.ACCOUNT_CHANNEL)
+
     if (message.channel.id !== process.env.ACCOUNT_CHANNEL && typeof channel !== 'undefined') {
       message.delete()
 
       message.channel.send(`${message.author}, you can only add Accounts in ${channel ?? 'Unknown'}`).then(m => m.delete({ timeout: 4500 }))
       return
     }
+
     if (!message.member?.hasPermission(PermissionType.ADMINISTRATOR)) {
       message.channel.send('You\'re not an Admin!');
       return
     }
 
     if (!message.guild?.me?.hasPermission(PermissionType.MANAGE_MESSAGES)) {
-      message.channel.send(`I NEED PERMISSIONS ${PermissionType.MANAGE_MESSAGES}`)
+      message.channel.send(`Missing Permission: ${PermissionType.MANAGE_MESSAGES}`)
       return
     }
 
     if (!args.length) {
       message.channel.send(`${message.author}`, {
         embed: {
+          color: EmbedColor.DEFAULT,
           fields: [
             {
               name: 'Account Types*',
@@ -57,6 +71,8 @@ export default class AddCommand extends BaseCommand {
     const type = args[0];
     const username = args[1];
     const password = args[2];
+
+    cooldown = Date.now()
 
 
     if (!(type in AccountType)) {
@@ -108,7 +124,6 @@ export default class AddCommand extends BaseCommand {
       category: <AccountType>type,
     }
 
-    console.log(newAcc);
 
     await Account.insert(newAcc).then(() => {
       message.author.send(`Account ${newAcc.username} was added to the Database.`).catch((e) => console.log(e));

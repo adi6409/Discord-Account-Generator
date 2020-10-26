@@ -5,5 +5,5 @@ export const calculateUptime = (time: number) => {
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
 
-    return totalSeconds > 60 ? `${days > 0 ? days + 'd' : ''} ${hours > 0 ? hours + 'h' : ''} ${minutes > 0 ? minutes + 'm' : ''}` : 'Bot started.';
+    return `${days}d ${hours}h ${minutes}m`;
 }
