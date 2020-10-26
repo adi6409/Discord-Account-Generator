@@ -4,7 +4,8 @@
 
 # 🚀 Links
 - [Discord Server](https://discord.gg/5UGwnNX)
-- [Discord Developer](https://discord.com/developers) 
+- [Discord Developer](https://discord.com/developer)
+- [Slappey](https://www.npmjs.com/package/slappey)
 
 # Todo
 - [ ] Commands
