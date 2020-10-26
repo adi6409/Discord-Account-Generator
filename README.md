@@ -1,9 +1,8 @@
 # Discord Account Generator
 
-> If you want to test the bot than join the discord linked below.
+> Soon
 
 # 🚀 Links
-- [Discord Server](https://discord.gg/5UGwnNX)
 - [Discord Developer](https://discord.com/developer)
 - [Slappey](https://www.npmjs.com/package/slappey)
 
